@@ -30,7 +30,7 @@ To start the container with persistence you can use the following:
 ```sh
 docker run -d \
   --name docker-influxdb-grafana \
-  -p 3003:3003 \
+  -p 3000:3000 \
   -p 3004:8083 \
   -p 8086:8086 \
   -v /path/for/influxdb:/var/lib/influxdb \
@@ -55,7 +55,7 @@ docker start docker-influxdb-grafana
 ```
 Host		Container		Service
 
-3003		3003			grafana
+3000		3000			grafana
 3004		8083			chronograf
 8086		8086			influxdb
 ```
@@ -67,7 +67,7 @@ docker exec -it <CONTAINER_ID> bash
 
 ## Grafana
 
-Open <http://localhost:3003>
+Open <http://localhost:3000>
 
 ```
 Username: root
