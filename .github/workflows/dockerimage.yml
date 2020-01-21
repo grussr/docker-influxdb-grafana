@@ -13,7 +13,10 @@ jobs:
     - name: Build the Docker image
       run: docker build . --file Dockerfile --tag rpgruss/docker-influxdb-grafana:latest
     - name: Login to DockerHub Registry
-      run: echo ${{ secrets.DOCKERHUB_PASSWORD }} | docker login -u ${{ secrets.DOCKERHUB_USERNAME }} --password-stdin
+      env:
+        docker_user: ${{ secrets.DOCKERHUB_USERNAME }}
+        docker_password: ${{ secrets.DOCKERHUB_PASSWORD }}
+      run: docker login -u $docker_user -p $docker_password 
     - name: Push the Docker image
       run: docker push rpgruss/docker-influxdb-grafana:latest
 
